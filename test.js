@@ -54,3 +54,14 @@ test('setIn with nested changed value', t => {
   };
   t.deepEqual(actual, expected);
 });
+
+test('setIn with null value, unchanged', t => {
+  const input = Object.freeze({
+    a: {
+      b: 0
+    }
+  });
+  const actual = setIn(input, Object.freeze(['a', 'b']), 0);
+  const expected = input;
+  t.is(actual, expected);
+});
