@@ -1,6 +1,6 @@
 {
   "name": "immutable-object-methods",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update normal plain javascript object, immutable style. Simlar to how immutable.js, seamless-immutable etc does it but a lot smaller and simpler.",
   "main": "dist/index.js",
   "scripts": {
