@@ -4,7 +4,7 @@
   "description": "Update normal plain javascript object, immutable style. Simlar to how immutable.js, seamless-immutable etc does it but a lot smaller and simpler.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "ava",
+    "test": "ava && semistandard | snazzy",
     "build": "rm -rf dist && mkdir -p dist && babel lib --out-dir dist",
     "watch": "rm -rf dist && mkdir -p dist && babel -w lib --out-dir dist",
     "prepublish": "npm run build",
