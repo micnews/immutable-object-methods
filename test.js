@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import {assign, getIn, mergeDeep, setIn} from './lib';
+import {assign, getIn, mergeDeep, setIn, set} from './lib';
 import objectMethods from './lib';
 
 test('default export', t => {
@@ -8,6 +8,24 @@ test('default export', t => {
   t.is(objectMethods.getIn, getIn);
   t.is(objectMethods.mergeDeep, mergeDeep);
   t.is(objectMethods.setIn, setIn);
+  t.is(objectMethods.set, set);
+});
+
+test('set', t => {
+  const input = Object.freeze({a: 'b'});
+  const actual = set(input, 'foo', 'bar');
+  const expected = {
+    a: 'b',
+    foo: 'bar'
+  };
+  t.deepEqual(actual, expected);
+});
+
+test('set with unchanged data', t => {
+  const input = Object.freeze({foo: 'bar'});
+  const actual = set(input, 'foo', 'bar');
+  const expected = input;
+  t.is(actual, expected);
 });
 
 test('setIn', t => {

@@ -13,7 +13,7 @@ npm install immutable-object-methods --save
 ## Usage
 
 ```js
-import {getIn, setIn, mergeDeep, assign} from 'immutable-object-methods';
+import {getIn, setIn, mergeDeep, assign, set} from 'immutable-object-methods';
 
 const input = {a: {b: 'c'}};
 const updated = setIn(input, ['a', 'd'], 'e');
@@ -38,6 +38,9 @@ console.log(value);
 const noneExists = getIn({}, ['a', 'b']);
 // don't throw if value doesn't exists, just return undefined
 console.log(noneExists === undefined);
+
+const data = set({beep: 'boop'}, 'foo', 'bar');
+console.log(data);
 
 ```
 
