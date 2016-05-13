@@ -1,4 +1,4 @@
-# immutable-object-methods 
+# immutable-object-methods [![Build Status](https://travis-ci.org/micnews/immutable-object-methods.png?branch=master)](https://travis-ci.org/micnews/immutable-object-methods)
 
 Update normal plain javascript object, immutable style. Simlar to how immutable.js, seamless-immutable etc does it but a lot smaller and simpler.
 

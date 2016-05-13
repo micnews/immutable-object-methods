@@ -8,7 +8,7 @@
     "build": "rm -rf dist && mkdir -p dist && babel lib --out-dir dist",
     "watch": "rm -rf dist && mkdir -p dist && babel -w lib --out-dir dist",
     "prepublish": "npm run build",
-    "posttest": "package-json-to-readme package.json > readme.md"
+    "posttest": "package-json-to-readme package.json --travis > readme.md"
   },
   "repository": {
     "type": "git",
