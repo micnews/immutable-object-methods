@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import {assign, getIn, mergeDeep, setIn, set} from './lib';
+import {assign, getIn, mergeDeep, setIn, set, without} from './lib';
 import objectMethods from './lib';
 
 test('default export', t => {
@@ -9,6 +9,7 @@ test('default export', t => {
   t.is(objectMethods.mergeDeep, mergeDeep);
   t.is(objectMethods.setIn, setIn);
   t.is(objectMethods.set, set);
+  t.is(objectMethods.without, without);
 });
 
 test('set', t => {
@@ -231,4 +232,35 @@ test('getIn() with simple object & does not exists', t => {
   };
   const actual = getIn(input, ['foo', 'bar']);
   t.is(actual, undefined);
+});
+
+test('without()', t => {
+  const input = Object.freeze({
+    a: 'b',
+    c: 'd'
+  });
+  const actual = without(input, 'c');
+  const expected = {
+    a: 'b'
+  };
+  t.deepEqual(actual, expected);
+});
+
+test('without() that does not change data', t => {
+  const input = Object.freeze({
+    a: 'b',
+    c: 'd'
+  });
+  const actual = without(input, 'not exists');
+  const expected = input;
+  t.deepEqual(actual, expected);
+});
+
+test('without() with falsy value', t => {
+  const input = Object.freeze({
+    foo: null
+  });
+  const actual = without(input, 'foo');
+  const expected = {};
+  t.deepEqual(actual, expected);
 });

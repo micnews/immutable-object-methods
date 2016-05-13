@@ -1,4 +1,4 @@
-import {getIn, setIn, mergeDeep, assign, set} from 'immutable-object-methods';
+import {getIn, setIn, mergeDeep, assign, set, without} from 'immutable-object-methods';
 
 const input = {a: {b: 'c'}};
 const updated = setIn(input, ['a', 'd'], 'e');
@@ -26,3 +26,6 @@ console.log(noneExists === undefined);
 
 const data = set({beep: 'boop'}, 'foo', 'bar');
 console.log(data);
+
+const beep = without({foo: 'bar'}, 'foo');
+console.log(beep);
