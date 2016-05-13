@@ -1,6 +1,14 @@
 import test from 'ava';
 import 'babel-core/register';
 import {assign, getIn, mergeDeep, setIn} from './lib';
+import objectMethods from './lib';
+
+test('default export', t => {
+  t.is(objectMethods.assign, assign);
+  t.is(objectMethods.getIn, getIn);
+  t.is(objectMethods.mergeDeep, mergeDeep);
+  t.is(objectMethods.setIn, setIn);
+});
 
 test('setIn', t => {
   const input = Object.freeze({});
