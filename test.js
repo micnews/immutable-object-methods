@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import {assign, setIn, mergeDeep} from './lib';
+import {assign, getIn, mergeDeep, setIn} from './lib';
 
 test('setIn', t => {
   const input = Object.freeze({});
@@ -182,4 +182,27 @@ test('mergeDeep with null value, unchanged', t => {
   const actual = mergeDeep(input, changes);
   const expected = input;
   t.is(actual, expected);
+});
+
+test('getIn() with none object', t => {
+  const input = null;
+  const actual = getIn(input, ['a']);
+  t.is(actual, undefined);
+});
+
+test('getIn() with simple object & exists', t => {
+  const input = {
+    a: {b: 'c'}
+  };
+  const actual = getIn(input, ['a', 'b']);
+  const expected = 'c';
+  t.is(actual, expected);
+});
+
+test('getIn() with simple object & does not exists', t => {
+  const input = {
+    a: {b: 'c'}
+  };
+  const actual = getIn(input, ['foo', 'bar']);
+  t.is(actual, undefined);
 });
