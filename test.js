@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import {setIn} from './lib';
+import {assign, setIn} from './lib';
 
 test('setIn', t => {
   const input = Object.freeze({});
@@ -64,4 +64,17 @@ test('setIn with null value, unchanged', t => {
   const actual = setIn(input, Object.freeze(['a', 'b']), 0);
   const expected = input;
   t.is(actual, expected);
+});
+
+test('assign', t => {
+  const actual = assign(Object.freeze({}));
+  const expected = {};
+  t.deepEqual(actual, expected);
+  t.not(actual, expected);
+});
+
+test('assign multiple', t => {
+  const actual = assign(Object.freeze({a: 'b'}), Object.freeze({c: 'd'}));
+  const expected = {a: 'b', c: 'd'};
+  t.deepEqual(actual, expected);
 });
