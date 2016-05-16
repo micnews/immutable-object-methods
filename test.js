@@ -1,7 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import {assign, getIn, mergeDeep, setIn, set, without} from './lib';
-import objectMethods from './lib';
+import {assign, getIn, mergeDeep, setIn, set, without, default as objectMethods} from './lib';
 
 test('default export', t => {
   t.is(objectMethods.assign, assign);
