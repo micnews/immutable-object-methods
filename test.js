@@ -28,6 +28,15 @@ test('set with unchanged data', t => {
   t.is(actual, expected);
 });
 
+test('set with array', t => {
+  const input = Object.freeze([0, 1]);
+  const actual = set(input, 0, -1);
+  const expected = [-1, 1];
+
+  t.deepEqual(actual, expected);
+  t.true(Array.isArray(actual));
+});
+
 test('setIn', t => {
   const input = Object.freeze({});
   const actual = setIn(input, Object.freeze(['a', 'b', 'c']), 'foo');
@@ -103,6 +112,14 @@ test('assign multiple', t => {
   const actual = assign(Object.freeze({a: 'b'}), Object.freeze({c: 'd'}));
   const expected = {a: 'b', c: 'd'};
   t.deepEqual(actual, expected);
+});
+
+test('assign w array', t => {
+  const input = [0];
+  const actual = assign(input, [1, 2, 3]);
+  const expected = [1, 2, 3];
+  t.deepEqual(actual, expected);
+  t.true(Array.isArray(actual));
 });
 
 test('mergeDeep', t => {
