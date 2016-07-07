@@ -1,6 +1,7 @@
 import test from 'ava';
 import 'babel-core/register';
-import {assign, getIn, mergeDeep, setIn, set, without, default as objectMethods} from './lib';
+import {assign, getIn, mergeDeep, setIn, set, without, map,
+  default as objectMethods} from './lib';
 
 test('default export', t => {
   t.is(objectMethods.assign, assign);
@@ -9,6 +10,7 @@ test('default export', t => {
   t.is(objectMethods.setIn, setIn);
   t.is(objectMethods.set, set);
   t.is(objectMethods.without, without);
+  t.is(objectMethods.map, map);
 });
 
 test('set', t => {
@@ -278,5 +280,26 @@ test('without() with falsy value', t => {
   });
   const actual = without(input, 'foo');
   const expected = {};
+  t.deepEqual(actual, expected);
+});
+
+test('map', t => {
+  const input = {a: 1, b: 2, c: 3, d: 4};
+  const actual = map(input, num => num % 2);
+  const expected = {a: 1, b: 0, c: 1, d: 0};
+  t.deepEqual(actual, expected);
+});
+
+test('map not changed values', t => {
+  const input = {a: 1, b: 2, c: 3};
+  const actual = map(input, num => num);
+  const expected = input;
+  t.is(actual, expected);
+});
+
+test('map w key', t => {
+  const input = {a: '', b: ''};
+  const actual = map(input, (val, key) => key);
+  const expected = {a: 'a', b: 'b'};
   t.deepEqual(actual, expected);
 });
