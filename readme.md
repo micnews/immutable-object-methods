@@ -57,10 +57,11 @@ npm test
 ## Dependencies
 
 - [object-assign](https://github.com/sindresorhus/object-assign): ES2015 Object.assign() ponyfill
+- [object.entries](https://github.com/es-shims/Object.entries): ES7 spec-compliant Object.entries shim.
 
 ## Dev Dependencies
 
-- [ava](https://github.com/sindresorhus/ava): Futuristic test runner 🚀
+- [ava](https://github.com/avajs/ava): Futuristic test runner 🚀
 - [babel-cli](https://github.com/babel/babel/tree/master/packages): Babel command line.
 - [babel-core](https://github.com/babel/babel/tree/master/packages): Babel compiler core.
 - [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.
