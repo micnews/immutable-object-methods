@@ -1,4 +1,4 @@
-import {getIn, setIn, mergeDeep, assign, set, without} from 'immutable-object-methods';
+import {getIn, setIn, mergeDeep, assign, set, without, chain} from 'immutable-object-methods';
 
 const input = {a: {b: 'c'}};
 const updated = setIn(input, ['a', 'd'], 'e');
@@ -29,3 +29,10 @@ console.log(data);
 
 const beep = without({foo: 'bar'}, 'foo');
 console.log(beep);
+
+// all of these can also be used chained, like
+const chained = chain({foo: 'bar'})
+  .set('beep', 'boop')
+  .without('foo')
+  .value;
+console.log(chained);
