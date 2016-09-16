@@ -155,6 +155,41 @@ test('mergeDeep with unchanged array', t => {
   t.is(actual.c, input.c);
 });
 
+test('mergeDeep with new unchanged array', t => {
+  const input = Object.freeze({
+    a: 'b'
+  });
+  const changes = Object.freeze({
+    a: 'yo',
+    c: [1, 2, 3]
+  });
+  const actual = mergeDeep(input, changes);
+  const expected = {
+    a: 'yo',
+    c: [1, 2, 3]
+  };
+  t.deepEqual(actual, expected);
+  t.is(actual.c, changes.c);
+});
+
+test('mergeDeep two arrays, new array should replace the old one', t => {
+  const input = Object.freeze({
+    a: 'b',
+    c: [1, 2, 3]
+  });
+  const changes = Object.freeze({
+    a: 'yo',
+    c: [1, 2, 3]
+  });
+  const actual = mergeDeep(input, changes);
+  const expected = {
+    a: 'yo',
+    c: [1, 2, 3]
+  };
+  t.deepEqual(actual, expected);
+  t.is(actual.c, changes.c);
+});
+
 test('mergeDeep with unchanged value', t => {
   const input = Object.freeze({
     a: {
